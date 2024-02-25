@@ -37,19 +37,38 @@ public class UNOTrackerController {
     }
 
     private void printMenu() {
-    	//your code goes here
+        System.out.println("Choose an option:");
+        System.out.println("1. Store UNO Game Score");
+        System.out.println("2. Calculate Average Score");
+        System.out.println("3. Identify Top Player");
+        System.out.println("4. Exit");
     }
 
     private void storeScore(Scanner scanner) {
-    	//your code goes here
+        System.out.println("Enter Player Name:");
+        scanner.nextLine(); // Consume the newline character
+        String playerName = scanner.nextLine();
+
+        System.out.println("Enter Score:");
+        int score = scanner.nextInt();
+
+        ScoreDTO scoreDTO = new ScoreDTO(playerName, score);
+        unoTrackerService.storeScoreData(scoreDTO);
+        System.out.println("Score Data stored successfully.");
     }
 
     private void calculateAverageScore(Scanner scanner) {
-    	//your code goes here
+        System.out.println("Enter Player Name:");
+        scanner.nextLine(); // Consume the newline character
+        String playerName = scanner.nextLine();
+
+        double averageScore = unoTrackerService.calculateAverageScore(playerName);
+        System.out.println("Average Score for " + playerName + ": " + averageScore);
     }
 
     private void identifyTopPlayer() {
-    	//your code goes here
+        String topPlayer = unoTrackerService.identifyTopPlayer();
+        System.out.println("Top Player: " + topPlayer);
     }
 
     public static void main(String[] args) {

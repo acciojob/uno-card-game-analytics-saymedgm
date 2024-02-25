@@ -10,12 +10,10 @@ public class Score {
     }
 
     public String getPlayerName() {
-    	//your code goes here
         return playerName;
     }
 
     public int getScore() {
-    	//your code goes here
         return score;
     }
 }

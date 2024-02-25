@@ -13,17 +13,16 @@ public class ScoreDataRepository {
     }
 
     public void storeScore(Score score) {
-    	//your code goes here
+        playerScores.computeIfAbsent(score.getPlayerName(), k -> new ArrayList<>()).add(score);
     }
 
     public List<Score> getScoresByPlayer(String playerName) {
-    	//your code goes here
         return playerScores.getOrDefault(playerName, new ArrayList<>());
     }
 
     public List<Score> getAllScores() {
-    	//your code goes here
+        List<Score> allScores = new ArrayList<>();
+        playerScores.values().forEach(allScores::addAll);
         return allScores;
     }
 }
-
